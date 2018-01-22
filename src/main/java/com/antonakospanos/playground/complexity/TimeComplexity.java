@@ -5,7 +5,7 @@ import java.util.stream.LongStream;
 
 public class TimeComplexity {
 
-    private static final long N = 1_000_000L;
+    private static final long N = 10_000_000_000L;
     private static long COUNTER = 0;
 
     public static void main(String[] args) {
@@ -45,19 +45,17 @@ public class TimeComplexity {
 
     /**
      * 1000   	  ->        1 msecs
-     * 10_000     ->	   50 msecs ~(50*1)
-     * 100_000    ->    4.500 msecs ~(100*50)
-     * 1_000_000  ->  400.500 msecs ~(100*50)
+     * 10_000     ->	   50 msecs ~(50*1)      // n * 10 -> time * 50
+     * 100_000    ->    4.500 msecs ~(100*50)    // n * 10 -> time * 100
+     * 1_000_000  ->  440,118 msecs ~(100*4.500) // n * 10 -> time * 100
      *
-     * Big O Notation:
-     *
-     * It's Quadratic O(n*n) cause:
+     * Big O Notation is O(n*n), that is Quadratic!
      *
      * a) Constant with c = 10, that is O(10)? No, it's not a constant time growth!
-     * b) Logarithmic, that is O(logn)? Hmm..
+     * b) Logarithmic, that is O(logn)? No, it's greater than linear growth!
      * c) Linear, that is O(n)? No, it's not a linear time growth!
-     * c) Quasilinear, that is O(n logn)? Hmm..
-     * d) Quadratic, that is O(n*n)? Yes! With n =
+     * c) Quasilinear, that is O(n logn)? No, its quadratic!
+     * d) Quadratic, that is O(n*n)? Yes!
      * e) Cube, that is O(n*n*n)? Nope.
      * f) Exponetional, that is O(c^n)? Nope.
      */
@@ -68,24 +66,21 @@ public class TimeComplexity {
     }
 
     /**
-     * 1_000   	- >       100 msecs
-     * 10_000   - >       300 msecs ~(3*100)
-     * 100_000  - >       900 msecs ~(3*300)
-     * 1_000_000  - >   4.900 msecs ~(5*900)
-     * 10_000_000 - >  35.884 msecs ~(7*900)
+     * 1_000_000      ->      1 msec
+     * 10_000_000     ->      5 msecs ~(5*1)     // n * 10 -> time * 5
+     * 100_000_000    ->     45 msecs ~(10*5)    // n * 10 -> time * 10
+     * 1_000_000_000  ->    450 msecs ~(10*45)   // n * 10 -> time * 10
+     * 10_000_000_000 ->  4.700 msecs ~(10*450)  // n * 10 -> time * 10
      *
-     *
-     * Big O Notation:
-     *
-     * It's LINEAR O(n) cause:
+     * Big O Notation is O(n), that is LINEAR!
      *
      * a) Constant with c = 10, that is O(10)? No, it's not a constant time growth!
-     * b) Logarithmic, that is O(logn)? Hmm..
-     * c) Linear, that is O(n)? Yes! With n =
-     * c) Quasilinear, that is O(n logn)? Hmm..											(merge sort, quick sort, etc.)
-     * d) Quadratic, that is O(n*n)? No, it's not a quadratic time growth!  			(bubble sort, etc.)
+     * b) Logarithmic, that is O(logn)? No, it's linear growth!
+     * c) Linear, that is O(n)? Yes!
+     * c) Quasilinear, that is O(n logn)? Nope.										(merge sort, quick sort, etc.)
+     * d) Quadratic, that is O(n*n)? Nope.                                			(bubble sort, etc.)
      * e) Cube, that is O(n*n*n)? Nope.
-     * f) Exponetional, that is O(c^n)? Nope.
+     * f) Exponential, that is O(c^n)? Nope.
      */
     private static void nestedComputation() {
         for (long i = 0; i < N; i++) {
@@ -94,7 +89,7 @@ public class TimeComplexity {
     }
 
     /**
-     * time = 60ms
+     * time = 0ms
      */
     private static void operation () {
         COUNTER++;
