@@ -16,3 +16,10 @@ target/
 .settings
 .project
 .gitignore
+
+# IDE
+.idea
+playground.iml
+
+# macintosh
+**.DS_Store
